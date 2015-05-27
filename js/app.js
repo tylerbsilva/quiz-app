@@ -27,33 +27,31 @@ var questions = [
   }
 ];
 
-// Prompt User for name
-
-// Welcome user and ask if they want to start the quiz
-
-
-
 
 // Parse questions and build out page based on contents
 function buildQuestions(arr) {
   var questionHTML = "";
   for (var i = 0; i < arr.length; i++ ) {
     // Parse answers and build out buttons
-    questionHTML += "<section id='question" + i + "'>";
-    questionHTML += buildButtons(arr.Answers);
-    questionHTML += "</section>";
+    questionHTML += "<div id='question" + i + "'>";
+    questionHTML += "<h1>"+ arr[i].Question + "</h1>";
+    questionHTML += buildButtons(arr[i].Answers);
+    questionHTML += "</div>";
   }
   return questionHTML;
 }
 
 function buildButtons(arr) {
   var output = "";
-  for (var i = 0; i < arr.length ; i++){
+  for (var i = 0; i < arr.length; i++){
     output += "<button>" + arr[i] + "</button>";
   }
   return output;
 }
 
+// Prompt User for name
+
+// Welcome user and ask if they want to start the quiz
 
 // when button is clicked, check if correct
   //if correct +1
@@ -64,5 +62,5 @@ function buildButtons(arr) {
 
 
 $(document).ready(function() {
-
+  $('.questions').append(buildQuestions(questions));
 });
