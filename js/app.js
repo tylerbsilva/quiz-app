@@ -33,7 +33,7 @@ function buildQuestions(arr) {
   var questionHTML = "";
   for (var i = 0; i < arr.length; i++ ) {
     // Parse answers and build out buttons
-    questionHTML += "<div id='question" + i + "'>";
+    questionHTML += "<div class='question' id='" + i + "'>";
     questionHTML += "<h1>"+ arr[i].Question + "</h1>";
     questionHTML += buildButtons(arr[i].Answers);
     questionHTML += "</div>";
@@ -42,10 +42,11 @@ function buildQuestions(arr) {
 }
 
 function buildButtons(arr) {
-  var output = "";
+  var output = "<ul>";
   for (var i = 0; i < arr.length; i++){
-    output += "<button>" + arr[i] + "</button>";
+    output += "<li><button>" + arr[i] + "</button></li>";
   }
+  output += "</ul>"
   return output;
 }
 
@@ -62,5 +63,5 @@ function buildButtons(arr) {
 
 
 $(document).ready(function() {
-  $('.questions').append(buildQuestions(questions));
+  $('.quiz').append(buildQuestions(questions));
 });
