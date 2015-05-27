@@ -1,5 +1,7 @@
+var quiz =  {};
+
 // VARIABLES
-var questions = [
+quiz.questions = [
   {
     "Question" : "1. Approximately how many homeless youth are in Chicago Public Schools?",
     "Answers" : ["15,000", "12,000", "10,000", "7,000"],
@@ -27,41 +29,44 @@ var questions = [
   }
 ];
 
+// FUNCTIONS
 
 // Parse questions and build out page based on contents
-function buildQuestions(arr) {
+quiz.buildQuestions = function(questionsArray) {
   var questionHTML = "";
-  for (var i = 0; i < arr.length; i++ ) {
+  for (var i = 0; i < questionsArray.length; i++ ) {
     // Parse answers and build out buttons
     questionHTML += "<div class='question' id='" + i + "'>";
-    questionHTML += "<h1>"+ arr[i].Question + "</h1>";
-    questionHTML += buildButtons(arr[i].Answers);
+    questionHTML += "<h1>"+ questionsArray[i].Question + "</h1>";
+    questionHTML += buildButtons(questionsArray[i].Answers);
     questionHTML += "</div>";
   }
   return questionHTML;
-}
+};
 
-function buildButtons(arr) {
+quiz.buildButtons = function(answers) {
   var output = "<ul>";
-  for (var i = 0; i < arr.length; i++){
-    output += "<li><button>" + arr[i] + "</button></li>";
+  for (var i = 0; i < answers.length; i++){
+    output += "<li><button>" + answers[i] + "</button></li>";
   }
-  output += "</ul>"
+  output += "</ul>";
   return output;
-}
+};
 
 // Prompt User for name
 
 // Welcome user and ask if they want to start the quiz
 
 // when button is clicked, check if correct
-  //if correct +1
+  // if correct +1
 // scroll to next section
 
 // Once completed, show amount correct
 // Show "reset" button that resets everything
 
+// Show right/wrong, which one is the correct answer
+
 
 $(document).ready(function() {
-  $('.quiz').append(buildQuestions(questions));
+  $('.quiz').append(quiz.buildQuestions(quiz.questions));
 });
