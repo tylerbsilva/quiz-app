@@ -31,6 +31,15 @@ quiz.questions = [
 
 // FUNCTIONS
 
+quiz.buildButtons = function(answers) {
+  var output = "<ul>";
+  for (var i = 0; i < answers.length; i++){
+    output += "<li><button>" + answers[i] + "</button></li>";
+  }
+  output += "</ul>";
+  return output;
+};
+
 // Parse questions and build out page based on contents
 quiz.buildQuestions = function(questionsArray) {
   var questionHTML = "";
@@ -42,15 +51,6 @@ quiz.buildQuestions = function(questionsArray) {
     questionHTML += "</div>";
   }
   return questionHTML;
-};
-
-quiz.buildButtons = function(answers) {
-  var output = "<ul>";
-  for (var i = 0; i < answers.length; i++){
-    output += "<li><button>" + answers[i] + "</button></li>";
-  }
-  output += "</ul>";
-  return output;
 };
 
 // Prompt User for name
