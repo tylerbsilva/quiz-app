@@ -104,7 +104,7 @@ quiz.enterDiv = function(){
   $('div').mouseenter(function(){
     var thisID = parseInt($(this).attr("id"));
     quiz.updateQuestionNumber(thisID + 1);
-  })
+  });
 };
 
 // PHASE 2:
