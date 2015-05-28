@@ -36,7 +36,7 @@ quiz.score = 0;
 quiz.buildButtons = function(answers) {
   var output = "<ul>";
   for (var i = 0; i < answers.length; i++){
-    output += "<li><button onclick='quiz.checkanswer'>" + answers[i] + "</button></li>";
+    output += "<li><button onclick='quiz.checkanswer()'>" + answers[i] + "</button></li>";
   }
   output += "</ul>";
   return output;
