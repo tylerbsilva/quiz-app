@@ -23,7 +23,7 @@ quiz.questions = [
     "Correct" : "50,000"
   },
   {
-    "Question" : "5. In the search for a solution, Mercy Home for Boys & Girls aide homeless youth. What percentage of kids get back on track in school with the help of their program?",
+    "Question" : "5. In the search for a solution, Mercy Home for Boys & Girls aides homeless youth. What percentage of kids get back on track in school with the help of their program?",
     "Answers" : ["95%", "99%", "92%", "96%"],
     "Correct" : "96%"
   }
@@ -69,4 +69,5 @@ quiz.buildQuestions = function(questionsArray) {
 
 $(document).ready(function() {
   $('.quiz').append(quiz.buildQuestions(quiz.questions));
+  $('nav').show();
 });
