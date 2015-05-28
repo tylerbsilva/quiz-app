@@ -47,7 +47,7 @@ quiz.buildQuestions = function(questionsArray) {
     // Parse answers and build out buttons
     questionHTML += "<div class='question' id='" + i + "'>";
     questionHTML += "<h1>"+ questionsArray[i].Question + "</h1>";
-    questionHTML += buildButtons(questionsArray[i].Answers);
+    questionHTML += quiz.buildButtons(questionsArray[i].Answers);
     questionHTML += "</div>";
   }
   return questionHTML;

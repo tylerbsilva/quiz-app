@@ -18,12 +18,29 @@ nav {
 
 h1 {
   position: relative;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 40%;
+  transform: translateY(-40%);
 }
 
 ul {
   position: relative;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 45%;
+  transform: translateY(-45%);
+  list-style: none;
+  margin-top: 10px;
+}
+
+li {
+  margin: 0 auto;
+  text-align: center;
+}
+
+button {
+  max-width: 500px;
+  margin: 5px auto;
+  width: 100%;
+  border: 0px;
+  border-radius: 4px;
+  background-color: #EEEEEE;
+
 }
