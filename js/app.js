@@ -65,6 +65,8 @@ quiz.checkanswer = function(answer){
   // check if answer is correct
   if (quiz.questions[div].Correct == button) {
     $(answer).css("background-color", "green");
+    quiz.score += 1;
+    $(".final span").text(quiz.score);
   } else {
     $(answer).css("background-color", "red");
   }
@@ -77,6 +79,18 @@ quiz.checkanswer = function(answer){
 // Show "reset" button that resets everything
 
 // Show right/wrong, which one is the correct answer
+
+//reset
+  quiz.reset = function(){
+    // reset button colors
+    $('button').css("background-color", "#EEEEEE");
+    // reset score
+    quiz.score = 0;
+    // Scroll back to top
+    $('html, body').animate({
+        scrollTop: $("#intro").offset().top
+    }, 1000);
+  };
 
 // PHASE 2:
 // Prompt User for name

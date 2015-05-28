@@ -12,9 +12,9 @@
   <nav>
     <p>Question <span>1</span> of 5</p>
   </nav>
-  <section class="intro">
+  <section class="intro" id="intro">
     <h1>Welcome to the Chicago Youth Homelessness Quiz</h1>
-    <button id="start" onclick="smoothScroll()">Click to start</button>
+    <button id="start" onclick="startScroll()">Click to start</button>
   </section>
   <section class="quiz">
     <!--
@@ -35,13 +35,13 @@
     <br>
     <p>To learn more about Mercy Home, or donate, visit their website at: <a href="//mercyhome.org">Mercy Home for Boys &amp; Girls</a></p>
     <a href="//mercyhome.org"><img src="img/mercy-home-logo.png" /></a>
-    <button id="reset">RESET QUIZ</button>
+    <button id="reset" onclick="quiz.reset()">RESET QUIZ</button>
   </section>
   <footer>
     <p>Made by Tyler Silva</p>
   </footer>
   <script>
-  function smoothScroll(){
+  function startScroll(){
       $('html, body').animate({
           scrollTop: $("#0").offset().top
       }, 1000);
