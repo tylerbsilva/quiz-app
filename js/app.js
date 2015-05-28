@@ -96,6 +96,17 @@ quiz.reset = function(){
   }, 1000);
 };
 
+quiz.updateQuestionNumber = function(divID){
+  $("nav span").text(divID);
+};
+
+quiz.enterDiv = function(){
+  $('div').mouseenter(function(){
+    var thisID = parseInt($(this).attr("id"));
+    quiz.updateQuestionNumber(thisID + 1);
+  })
+};
+
 // PHASE 2:
 // Prompt User for name
 // Welcome user and ask if they want to start the quiz
@@ -113,6 +124,9 @@ $(document).ready(function() {
   .mouseleave(function(){
     $('nav').fadeOut();
   });
+
+  // Update question numbers at top
+  quiz.enterDiv();
 
 
 
