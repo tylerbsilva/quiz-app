@@ -36,7 +36,7 @@ quiz.score = 0;
 quiz.buildButtons = function(answers) {
   var output = "<ul>";
   for (var i = 0; i < answers.length; i++){
-    output += "<li><button onclick='quiz.checkanswer()'>" + answers[i] + "</button></li>";
+    output += "<li><button onclick='quiz.checkanswer(this)'>" + answers[i] + "</button></li>";
   }
   output += "</ul>";
   return output;
@@ -57,17 +57,16 @@ quiz.buildQuestions = function(questionsArray) {
 
 
 // when button is clicked, check if correct
-quiz.checkanswer = function(){
+quiz.checkanswer = function(answer){
   // Get the current question (id of div)
-  var i = $(this).closest("div").attr("id");
-  console.log(i);
-  var button = $(this).val();
-  console.log(button);
+  var div = answer.parentNode.parentNode.parentNode;
+  div = parseInt(div.getAttribute('id'));
+  var button = answer.innerHTML;
   // check if answer is correct
-  if (quiz.questions[i].correct == button) {
-    $(this).css("background-color", "green");
+  if (quiz.questions[div].Correct == button) {
+    $(answer).css("background-color", "green");
   } else {
-    $(this).css("background-color", "red");
+    $(answer).css("background-color", "red");
   }
     //add 1 to score
 };
