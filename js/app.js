@@ -62,7 +62,7 @@ quiz.checkAnswer = function(){
   var i = $(this).closest("div").attr("id");
   var button = $(this).val();
   // check if answer is correct
-  if (i == button) {
+  if (quiz.questions[i].correct == button) {
     $(this).css("background-color", "green");
   } else {
     $(this).css("background-color", "red");
