@@ -14,9 +14,9 @@
   </nav>
   <section class="intro" id="intro">
     <h1>Welcome to the Chicago Youth Homelessness Quiz</h1>
-    <button id="start" onclick="startScroll()">Click to start</button>
+    <button id="start" onclick="quiz.start()">Click to start</button>
   </section>
-  <section class="quiz">
+  <section class="quiz" id="quiz">
     <!--
     <div class="question" id="0">
         <h1>Question</h1>
@@ -40,12 +40,5 @@
   <footer>
     <p>Made by Tyler Silva</p>
   </footer>
-  <script>
-  function startScroll(){
-      $('html, body').animate({
-          scrollTop: $("#0").offset().top
-      }, 1000);
-  }
-  </script>
 </body>
 </html>

@@ -65,32 +65,36 @@ quiz.checkanswer = function(answer){
   // check if answer is correct
   if (quiz.questions[div].Correct == button) {
     $(answer).css("background-color", "green");
+    // if correct +1
     quiz.score += 1;
+    // Update score at bottom of page
     $(".final span").text(quiz.score);
   } else {
     $(answer).css("background-color", "red");
   }
-    //add 1 to score
 };
-  // if correct +1
-
-
-// Once completed, show amount correct
-// Show "reset" button that resets everything
 
 // Show right/wrong, which one is the correct answer
 
-//reset
-  quiz.reset = function(){
-    // reset button colors
-    $('button').css("background-color", "#EEEEEE");
-    // reset score
-    quiz.score = 0;
-    // Scroll back to top
-    $('html, body').animate({
-        scrollTop: $("#intro").offset().top
-    }, 1000);
-  };
+// Quiz start
+quiz.start = function(){
+  $('html, body').animate({
+      scrollTop: $("#0").offset().top
+  }, 1000);
+};
+
+
+// Show "reset" button that resets everything
+quiz.reset = function(){
+  // reset button colors
+  $('button').css("background-color", "#EEEEEE");
+  // reset score
+  quiz.score = 0;
+  // Scroll back to top
+  $('html, body').animate({
+      scrollTop: $("#intro").offset().top
+  }, 1000);
+};
 
 // PHASE 2:
 // Prompt User for name
@@ -100,4 +104,16 @@ quiz.checkanswer = function(answer){
 $(document).ready(function() {
   $('.quiz').append(quiz.buildQuestions(quiz.questions));
   $('nav').hide();
+
+  // Show questions number when taking quiz, hide when not in #quiz
+  $('#quiz')
+  .mouseenter(function(){
+    $('nav').fadeIn();
+  })
+  .mouseleave(function(){
+    $('nav').fadeOut();
+  });
+
+
+
 });
