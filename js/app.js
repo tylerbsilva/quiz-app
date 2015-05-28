@@ -29,12 +29,14 @@ quiz.questions = [
   }
 ];
 
+quiz.score = 0;
+
 // FUNCTIONS
 
 quiz.buildButtons = function(answers) {
   var output = "<ul>";
   for (var i = 0; i < answers.length; i++){
-    output += "<li><button>" + answers[i] + "</button></li>";
+    output += "<li><button onclick='quiz.checkAnswer()'>" + answers[i] + "</button></li>";
   }
   output += "</ul>";
   return output;
@@ -53,21 +55,34 @@ quiz.buildQuestions = function(questionsArray) {
   return questionHTML;
 };
 
-// Prompt User for name
-
-// Welcome user and ask if they want to start the quiz
 
 // when button is clicked, check if correct
+quiz.checkAnswer = function(){
+  // Get the current question (id of div)
+  var i = $(this).closest("div").attr("id");
+  var button = $(this).val();
+  // check if answer is correct
+  if (i == button) {
+    $(this).css("background-color", "green");
+  } else {
+    $(this).css("background-color", "red");
+  }
+    //add 1 to score
+};
   // if correct +1
-// scroll to next section
+
 
 // Once completed, show amount correct
 // Show "reset" button that resets everything
 
 // Show right/wrong, which one is the correct answer
 
+// PHASE 2:
+// Prompt User for name
+// Welcome user and ask if they want to start the quiz
+
 
 $(document).ready(function() {
   $('.quiz').append(quiz.buildQuestions(quiz.questions));
-  $('nav').show();
+  $('nav').hide();
 });
