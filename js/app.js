@@ -67,11 +67,11 @@ quiz.checkanswer = function(answer){
     if (quiz.questions[parseInt(divID)].Correct == element.innerHTML) {
       // change color
       $(element).css("background-color", "rgb(166, 244, 169)");
-      $(element).attr('diabled', true);
+      $(element).attr('disabled', true);
       $(element).attr('onclick', '');
     } else {
       $(element).css("background-color", "rgb(247, 135, 135)");
-      $(element).attr('diabled', true);
+      $(element).attr('disabled', true);
       $(element).attr('onclick', '');
     }
   });
@@ -100,7 +100,9 @@ quiz.start = function(){
 quiz.reset = function(){
   // reset button colors
   $('button').css("background-color", "#EEEEEE");
-  $('button').attr('disabled', false);
+  $('#quiz').find('button').each(function(index, element){
+    $(element).attr('onclick', 'quiz.checkanswer(this)');
+  });
   // reset score
   quiz.score = 0;
   $(".final span").text(quiz.score);
