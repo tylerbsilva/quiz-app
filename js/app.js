@@ -102,6 +102,7 @@ quiz.reset = function(){
   $('button').css("background-color", "#EEEEEE");
   // reset score
   quiz.score = 0;
+  $(".final span").text(quiz.score);
   // Scroll back to top
   $('html, body').animate({
       scrollTop: $("#intro").offset().top
