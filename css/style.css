@@ -11,6 +11,7 @@
 body {
   margin-top: 0;
   background: linear-gradient(to bottom, #1b866c,#1e7d3c );
+  font-family: 'Varela Round', sans-serif;
 }
 
 nav {
