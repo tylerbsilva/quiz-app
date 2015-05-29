@@ -100,10 +100,10 @@ quiz.start = function(){
 quiz.reset = function(){
   // reset button colors
   $('button').css("background-color", "#EEEEEE");
+  $('button').attr('disabled', false);
   // reset score
   quiz.score = 0;
   $(".final span").text(quiz.score);
-  $('button').attr('disabled', false);
   // Scroll back to top
   $('html, body').animate({
       scrollTop: $("#intro").offset().top
