@@ -64,6 +64,7 @@ quiz.checkanswer = function(answer){
   var button = answer.innerHTML;
   // check if answer is correct
   $(div).find('button').each(function(index, element){
+    $(element).css("color", "white");
     if (quiz.questions[parseInt(divID)].Correct == element.innerHTML) {
       // change color
       $(element).css("background-color", "rgb(166, 244, 169)");
