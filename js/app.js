@@ -103,7 +103,7 @@ quiz.reset = function(){
   // reset score
   quiz.score = 0;
   $(".final span").text(quiz.score);
-  $('button').attr('disabled', false)
+  $('button').attr('disabled', false);
   // Scroll back to top
   $('html, body').animate({
       scrollTop: $("#intro").offset().top
