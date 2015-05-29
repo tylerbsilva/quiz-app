@@ -60,17 +60,29 @@ quiz.buildQuestions = function(questionsArray) {
 quiz.checkanswer = function(answer){
   // Get the current question (id of div)
   var div = answer.parentNode.parentNode.parentNode;
-  div = parseInt(div.getAttribute('id'));
+  var divID = div.getAttribute('id');
   var button = answer.innerHTML;
   // check if answer is correct
-  if (quiz.questions[div].Correct == button) {
-    $(answer).css("background-color", "green");
+  $(div).find('button').each(function(index, element){
+    if (quiz.questions[parseInt(divID)].Correct == element.innerHTML) {
+      // change color
+      $(element).css("background-color", "rgb(166, 244, 169)");
+      $(element).attr('diabled', true);
+      $(element).attr('onclick', '');
+    } else {
+      $(element).css("background-color", "rgb(247, 135, 135)");
+      $(element).attr('diabled', true);
+      $(element).attr('onclick', '');
+    }
+  });
+
+  if (quiz.questions[parseInt(divID)].Correct == button) {
     // if correct +1
     quiz.score += 1;
     // Update score at bottom of page
     $(".final span").text(quiz.score);
   } else {
-    $(answer).css("background-color", "red");
+
   }
 };
 
@@ -106,6 +118,20 @@ quiz.enterDiv = function(){
     quiz.updateQuestionNumber(thisID + 1);
   });
 };
+
+// Button clicked
+  // select parentNode
+  // forloop through
+quiz.changeBackgrounds = function(answer){
+  var div = answer.parentNode.parentNode.parentNode;
+  var ul = answer.parentNode.parentNode;
+  $(ul).child('button').each(function(){
+
+
+  });
+
+};
+
 
 // PHASE 2:
 // Prompt User for name
