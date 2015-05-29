@@ -103,6 +103,7 @@ quiz.reset = function(){
   // reset score
   quiz.score = 0;
   $(".final span").text(quiz.score);
+  $('button').attr('disabled', false)
   // Scroll back to top
   $('html, body').animate({
       scrollTop: $("#intro").offset().top
@@ -119,20 +120,6 @@ quiz.enterDiv = function(){
     quiz.updateQuestionNumber(thisID + 1);
   });
 };
-
-// Button clicked
-  // select parentNode
-  // forloop through
-quiz.changeBackgrounds = function(answer){
-  var div = answer.parentNode.parentNode.parentNode;
-  var ul = answer.parentNode.parentNode;
-  $(ul).child('button').each(function(){
-
-
-  });
-
-};
-
 
 // PHASE 2:
 // Prompt User for name
