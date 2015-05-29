@@ -69,12 +69,10 @@ quiz.checkanswer = function(answer){
       $(element).css("background-color", "rgb(166, 244, 169)");
       $(element).attr('diabled', true);
       $(element).attr('onclick', '');
-      $(element).css("color", "#FFFFFF");
     } else {
       $(element).css("background-color", "rgb(247, 135, 135)");
       $(element).attr('diabled', true);
       $(element).attr('onclick', '');
-      $(element).css("color", "#FFFFFF");
     }
   });
 
