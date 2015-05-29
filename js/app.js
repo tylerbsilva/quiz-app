@@ -67,11 +67,9 @@ quiz.checkanswer = function(answer){
     if (quiz.questions[parseInt(divID)].Correct == element.innerHTML) {
       // change color
       $(element).css("background-color", "rgb(166, 244, 169)");
-      $(element).attr('disabled', true);
       $(element).attr('onclick', '');
     } else {
       $(element).css("background-color", "rgb(247, 135, 135)");
-      $(element).attr('disabled', true);
       $(element).attr('onclick', '');
     }
   });
