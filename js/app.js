@@ -33,15 +33,6 @@ quiz.score = 0;
 
 // FUNCTIONS
 
-quiz.buildButtons = function(answers) {
-  var output = "<ul>";
-  for (var i = 0; i < answers.length; i++){
-    output += "<li><button onclick='quiz.checkanswer(this)'>" + answers[i] + "</button></li>";
-  }
-  output += "</ul>";
-  return output;
-};
-
 // Parse questions and build out page based on contents
 quiz.buildQuestions = function(questionsArray) {
   var questionHTML = "";
@@ -55,11 +46,19 @@ quiz.buildQuestions = function(questionsArray) {
   return questionHTML;
 };
 
+quiz.buildButtons = function(answers) {
+  var output = "<ul>";
+  for (var i = 0; i < answers.length; i++){
+    output += "<li><button onclick='quiz.checkanswer(this)'>" + answers[i] + "</button></li>";
+  }
+  output += "</ul>";
+  return output;
+};
 
 // when button is clicked, check if correct
 quiz.checkanswer = function(answer){
   // Get the current question (id of div)
-  var div = answer.parentNode.parentNode.parentNode;
+  var div = answer.closest('div');
   var divID = div.getAttribute('id');
   var button = answer.innerHTML;
   // check if answer is correct
@@ -78,13 +77,9 @@ quiz.checkanswer = function(answer){
     // if correct +1
     quiz.score += 1;
     // Update score at bottom of page
-    $(".final span").text(quiz.score);
-  } else {
-
+    $("#numberCorrect").text(quiz.score);
   }
 };
-
-// Show right/wrong, which one is the correct answer
 
 // Quiz start
 quiz.start = function(){
@@ -97,29 +92,32 @@ quiz.start = function(){
 // Show "reset" button that resets everything
 quiz.reset = function(){
   // reset button colors
-  $('button').css("background-color", "#EEEEEE");
   $('#quiz').find('button').each(function(index, element){
+    $(element).css("background-color", "#EEEEEE");
     $(element).attr('onclick', 'quiz.checkanswer(this)');
   });
   // reset score
   quiz.score = 0;
-  $(".final span").text(quiz.score);
   // Scroll back to top
   $('html, body').animate({
       scrollTop: $("#intro").offset().top
   }, 1000);
+  $("#numberCorrect").text(quiz.score);
 };
 
-quiz.updateQuestionNumber = function(divID){
-  $("nav span").text(divID);
-};
-
+// On enter of Div, update question #
 quiz.enterDiv = function(){
   $('div').mouseenter(function(){
     var thisID = parseInt($(this).attr("id"));
     quiz.updateQuestionNumber(thisID + 1);
   });
 };
+
+// Update question number
+quiz.updateQuestionNumber = function(divID){
+  $("#questionCount").text(divID);
+};
+
 
 // PHASE 2:
 // Prompt User for name
@@ -128,20 +126,18 @@ quiz.enterDiv = function(){
 
 $(document).ready(function() {
   $('.quiz').append(quiz.buildQuestions(quiz.questions));
-  $('nav').hide();
+  $('header').hide();
 
   // Show questions number when taking quiz, hide when not in #quiz
   $('#quiz')
   .mouseenter(function(){
-    $('nav').fadeIn();
+    $('header').fadeIn();
   })
   .mouseleave(function(){
-    $('nav').fadeOut();
+    $('header').fadeOut();
   });
 
   // Update question numbers at top
   quiz.enterDiv();
-
-
 
 });
