@@ -63,9 +63,6 @@ button:active {
   border: 0;
 }
 
-
-
-
 /***************
   LAYOUT
 ***************/
@@ -108,6 +105,12 @@ button:active {
   margin: 0 auto;
   text-align: center;
   padding: 0 5px;
+}
+
+.nextQuestion {
+  width: 200px;
+  font-size: 18px;
+  margin-top: 2rem;
 }
 
 .final a {

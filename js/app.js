@@ -41,7 +41,9 @@ quiz.buildQuestions = function(questionsArray) {
     questionHTML += "<div class='question' id='" + i + "'>";
     questionHTML += "<h1>"+ questionsArray[i].Question + "</h1>";
     questionHTML += quiz.buildButtons(questionsArray[i].Answers);
+    questionHTML += "<button class='nextQuestion' onclick='quiz.nextQuestion(" + i + ")'>Next Question</button>";
     questionHTML += "</div>";
+    $('.final').attr('id', i+1);
   }
   return questionHTML;
 };
@@ -55,14 +57,23 @@ quiz.buildButtons = function(answers) {
   return output;
 };
 
+quiz.nextQuestion = function(num) {
+  num += 1;
+  $('html, body').animate({
+      scrollTop: $("#" + num).offset().top
+  }, 1000);
+
+};
+
 // when button is clicked, check if correct
 quiz.checkanswer = function(answer){
   // Get the current question (id of div)
+  var ul = answer.closest('ul');
   var div = answer.closest('div');
   var divID = div.getAttribute('id');
   var button = answer.innerHTML;
   // check if answer is correct
-  $(div).find('button').each(function(index, element){
+  $(ul).find('button').each(function(index, element){
     if (quiz.questions[parseInt(divID)].Correct == element.innerHTML) {
       // change color
       $(element).css("background-color", "rgb(166, 244, 169)");
@@ -92,7 +103,7 @@ quiz.start = function(){
 // Show "reset" button that resets everything
 quiz.reset = function(){
   // reset button colors
-  $('#quiz').find('button').each(function(index, element){
+  $('.question ul').find('button').each(function(index, element){
     $(element).css("background-color", "#EEEEEE");
     $(element).attr('onclick', 'quiz.checkanswer(this)');
   });
@@ -125,6 +136,7 @@ quiz.updateQuestionNumber = function(divID){
 
 
 $(document).ready(function() {
+  document.body.style.overflow = 'hidden';
   $('.quiz').append(quiz.buildQuestions(quiz.questions));
   $('header').hide();
 
